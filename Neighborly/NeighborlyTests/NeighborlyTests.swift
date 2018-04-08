@@ -2,8 +2,8 @@
 //  NeighborlyTests.swift
 //  NeighborlyTests
 //
-//  Created by Other users on 4/1/18.
-//  Copyright © 2018 Adam Liber. All rights reserved.
+//  Created by Anup Sankarraman on 4/2/18.
+//  Copyright © 2018 Anup Sankarraman. All rights reserved.
 //
 
 import XCTest
