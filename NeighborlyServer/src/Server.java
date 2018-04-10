@@ -20,7 +20,7 @@ public class Server {
 			while(true)
 			{
 				System.out.println("Waiting for connection...");
-				Session session = new
+				//Session session = new
 			}
 		}
 		catch(IOException ioe)

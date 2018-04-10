@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/Daniyal Shafi/Documents/School/USC/Spring 2018/CSCI 201/APIs/javax.websocket-api-1.0-rc4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Daniyal Shafi/Documents/School/USC/Spring 2018/CSCI 201/APIs/mysql-connector-java-5.1.46.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

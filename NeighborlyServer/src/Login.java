@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class Login {
 	String username;
 	String password;
-	static String loginQuery = "SELECT * FROM users WHERE username=? && password=?";
+	static String loginQuery = "SELECT * FROM Userq WHERE username=? && password=?";
 	
 	Login(String password, String username){
 		this.username = username;
