@@ -2,13 +2,24 @@
 public class Item {
 	
 	boolean availibility;
-	String imageURL;
-	String description;
-	String address;
-	User owner;
-	User borrower;
+	private String imageURL;
+	private String description;
+	private String address;
+	private User owner;
+	private User borrower;
+	private String itemName;
 	
-	String itemName;
+	Item(boolean availibility, String imageURL, String  description, String address, User owner, User borrower,String itemName)
+	{
+		this.availibility = availibility;
+		this.imageURL = imageURL;
+		this.description = description;
+		this.address = address;
+		this.owner = owner;
+		this.borrower = borrower;
+		this.itemName = itemName;
+	}
+	
 	public String getItemName() {
 		return itemName;
 	}

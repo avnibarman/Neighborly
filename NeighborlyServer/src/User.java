@@ -2,11 +2,23 @@ import java.util.ArrayList;
 
 public class User {
 	
-	String username;
-	String email;
-	String imageURL;
-	ArrayList<Item> myItems;
+	private String username;
+	private String email;
+	private String imageURL;
+	private ArrayList<Item> myItems;
 	
+	User(String username,String email,String imageURL)
+	{
+		this.username = username;
+		this.email = email;
+		this.imageURL = imageURL;
+		this.myItems = new ArrayList<Item>(); // add an empty class
+	}
+	
+	void addItem(Item toAdd)
+	{
+		myItems.add(toAdd);
+	}
 	
 	public String getUsername() {
 		return username;
