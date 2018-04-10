@@ -5,44 +5,38 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Login {
-	String username;
+public class SignUp {
+	String name;
 	String password;
-	static String loginQuery = "SELECT * FROM Userq WHERE username=? && password=?";
+	String email;
 	
-	Login(String password, String username){
-		this.username = username;
+	SignUp(String email, String password,String name){
+		this.name = name;
 		this.password = password;
+		this.email = email;
 	}
 	
-	boolean performLogin()
+	public boolean performSignUp()
 	{
 		Connection conn = null;
 		Statement st = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null; 
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/Neighborly?user=root&password=root&useSSL=false"); 
 			st = conn.createStatement();
-			ps = conn.prepareStatement(loginQuery);
-			ps.setString(1, username);
-			ps.setString(2, password);
-			rs = ps.executeQuery();
+			ps = conn.prepareStatement("INSERT INTO Users (email, name, password)\r\n" + 
+					"VALUES (\" " + this.email + "\",\"" + this.name + "\",\""+ this.password +"\");");
+			int x = ps.executeUpdate();
 			
-			if(rs.next())
-			{
-				//validation was successful
-				return true;
-			}
-			else //validation was not successful
-			{
-				return false;
-			}
+			System.out.println(x);
+			return true;
+			
 		}
 		catch(SQLException sqle){
 			System.out.println("sqle: " + sqle.getMessage());
+			return false;
 		}
 		catch(ClassNotFoundException cnfe)
 		{
@@ -50,9 +44,6 @@ public class Login {
 		}
 		finally {
 			try {
-				if(rs!= null) {
-					rs.close();
-				}
 				if(st != null) {
 					st.close();
 				}
@@ -67,8 +58,11 @@ public class Login {
 			}
 			
 		}
-
-			return false;
-		}
-
+		
+		return false;
+	}
+	
+	public static void main(String[] args) {
+		new SignUp("dshafi@usc.edu", "password", "Daniyal Shafi").performSignUp();
+	}
 }
