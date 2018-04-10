@@ -8,11 +8,12 @@ CREATE TABLE Users (
     email VARCHAR(100) UNIQUE NOT NULL,
     name VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
-    image VARCHAR(300) NULL
+    imageURL VARCHAR(300) NULL
 );
 
-CREATE TABLE Items (
+CREATE TABLE Items (	
 	itemID INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    itemName VARCHAR(30) NOT NULL,
     ownerID INT(11) NOT NULL,-- foreign key from user table
     borrowerID INT(11), -- foreign key from user table, if its null, means that it is available
     availibility INT(1) NOT NULL,-- 0 its available, 1 it's not
