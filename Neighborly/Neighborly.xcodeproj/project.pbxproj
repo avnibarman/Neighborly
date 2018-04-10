@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BC934625207BFC6E0050F81A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC934624207BFC6E0050F81A /* SearchViewController.swift */; };
 		BC934627207BFF100050F81A /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC934626207BFF100050F81A /* PostViewController.swift */; };
+		BC93462B207C73A80050F81A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC93462A207C73A80050F81A /* AccountViewController.swift */; };
 		BCD2DB672071FD640088B36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB662071FD640088B36B /* AppDelegate.swift */; };
 		BCD2DB692071FD640088B36B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB682071FD640088B36B /* ViewController.swift */; };
 		BCD2DB6C2071FD640088B36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD2DB6A2071FD640088B36B /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		BC934624207BFC6E0050F81A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		BC934626207BFF100050F81A /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		BC93462A207C73A80050F81A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		BCD2DB632071FD640088B36B /* Neighborly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neighborly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD2DB662071FD640088B36B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCD2DB682071FD640088B36B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				BCD2DBAA207AEA760088B36B /* AboutViewController.swift */,
 				BC934624207BFC6E0050F81A /* SearchViewController.swift */,
 				BC934626207BFF100050F81A /* PostViewController.swift */,
+				BC93462A207C73A80050F81A /* AccountViewController.swift */,
 			);
 			path = Neighborly;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			files = (
 				BC934625207BFC6E0050F81A /* SearchViewController.swift in Sources */,
 				BCD2DBA220733DAB0088B36B /* MMDrawerVisualState.m in Sources */,
+				BC93462B207C73A80050F81A /* AccountViewController.swift in Sources */,
 				BCD2DB9520733CE00088B36B /* LeftSideMenuViewController.swift in Sources */,
 				BCD2DBA420733DAB0088B36B /* MMDrawerController.m in Sources */,
 				BCD2DBAB207AEA760088B36B /* AboutViewController.swift in Sources */,

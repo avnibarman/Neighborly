@@ -30,6 +30,12 @@ class LeftSideMenuViewController: UIViewController , UITableViewDelegate, UITabl
                 appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
                 break;
             case 1:
+                let accountViewController = self.storyboard?.instantiateViewController(withIdentifier: "AccountViewController") as! AccountViewController
+                let accountNavController = UINavigationController(rootViewController: accountViewController)
+                let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.centerContainer!.centerViewController = accountNavController
+                appDelegate.centerContainer!.toggle(MMDrawerSide.left, animated: true, completion: nil)
+            case 4:
                 let aboutViewController = self.storyboard?.instantiateViewController(withIdentifier: "AboutViewController") as! AboutViewController
                 let aboutNavController = UINavigationController(rootViewController: aboutViewController)
                 let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
