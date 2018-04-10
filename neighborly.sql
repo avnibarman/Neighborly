@@ -19,6 +19,8 @@ CREATE TABLE Items (
     image VARCHAR(300),
     description VARCHAR(500),
     categories VARCHAR(300),
+	latitude DOUBLE(20,16) NOT NULL,
+    longitude DOUBLE(20,16) NOT NULL,
     FOREIGN KEY fk1(ownerID) REFERENCES Users(userID),
     FOREIGN KEY fk2(borrowerID) REFERENCES Users(userID)
 );
