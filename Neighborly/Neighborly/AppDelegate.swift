@@ -12,10 +12,36 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    var centerContainer: MMDrawerController?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        var rootViewController = self.window?.rootViewController
+        
+        let mainStoryBoard: UIStoryboard  = UIStoryboard(name: "Main", bundle: nil)
+        
+        var centerViewController = mainStoryBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
+        var leftSideMenuViewController = mainStoryBoard.instantiateViewController(withIdentifier: "LeftSideMenuViewController") as UIViewController
+        
+        var leftSideNav = UINavigationController(rootViewController: leftSideMenuViewController)
+        var centerNav = UINavigationController(rootViewController: centerViewController)
+        
+        
+        centerContainer = MMDrawerController(center: centerNav, leftDrawerViewController: leftSideNav)
+        
+        centerContainer!.openDrawerGestureModeMask = MMOpenDrawerGestureMode.panningCenterView;
+        centerContainer!.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.panningCenterView;
+        
+        window?.rootViewController = centerContainer
+        window?.makeKeyAndVisible()
+        
+        
+        
+        
+        
+        
+        
         return true
     }
 

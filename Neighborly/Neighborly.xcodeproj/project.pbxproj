@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC934625207BFC6E0050F81A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC934624207BFC6E0050F81A /* SearchViewController.swift */; };
+		BC934627207BFF100050F81A /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC934626207BFF100050F81A /* PostViewController.swift */; };
 		BCD2DB672071FD640088B36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB662071FD640088B36B /* AppDelegate.swift */; };
 		BCD2DB692071FD640088B36B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB682071FD640088B36B /* ViewController.swift */; };
 		BCD2DB6C2071FD640088B36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD2DB6A2071FD640088B36B /* Main.storyboard */; };
@@ -14,6 +16,13 @@
 		BCD2DB712071FD640088B36B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD2DB6F2071FD640088B36B /* LaunchScreen.storyboard */; };
 		BCD2DB7C2071FD640088B36B /* NeighborlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB7B2071FD640088B36B /* NeighborlyTests.swift */; };
 		BCD2DB872071FD640088B36B /* NeighborlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB862071FD640088B36B /* NeighborlyUITests.swift */; };
+		BCD2DB9520733CE00088B36B /* LeftSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB9420733CE00088B36B /* LeftSideMenuViewController.swift */; };
+		BCD2DBA120733DAB0088B36B /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB9820733DAA0088B36B /* MMDrawerBarButtonItem.m */; };
+		BCD2DBA220733DAB0088B36B /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB9B20733DAB0088B36B /* MMDrawerVisualState.m */; };
+		BCD2DBA320733DAB0088B36B /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DB9F20733DAB0088B36B /* UIViewController+MMDrawerController.m */; };
+		BCD2DBA420733DAB0088B36B /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DBA020733DAB0088B36B /* MMDrawerController.m */; };
+		BCD2DBA9207AE1150088B36B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DBA8207AE1150088B36B /* MenuTableViewCell.swift */; };
+		BCD2DBAB207AEA760088B36B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2DBAA207AEA760088B36B /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC934624207BFC6E0050F81A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		BC934626207BFF100050F81A /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		BCD2DB632071FD640088B36B /* Neighborly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neighborly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD2DB662071FD640088B36B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCD2DB682071FD640088B36B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +58,19 @@
 		BCD2DB822071FD640088B36B /* NeighborlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeighborlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD2DB862071FD640088B36B /* NeighborlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborlyUITests.swift; sourceTree = "<group>"; };
 		BCD2DB882071FD640088B36B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCD2DB9420733CE00088B36B /* LeftSideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSideMenuViewController.swift; sourceTree = "<group>"; };
+		BCD2DB9720733DA90088B36B /* Neighborly-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Neighborly-Bridging-Header.h"; sourceTree = "<group>"; };
+		BCD2DB9820733DAA0088B36B /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		BCD2DB9920733DAA0088B36B /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		BCD2DB9A20733DAA0088B36B /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
+		BCD2DB9B20733DAB0088B36B /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		BCD2DB9C20733DAB0088B36B /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		BCD2DB9D20733DAB0088B36B /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		BCD2DB9E20733DAB0088B36B /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		BCD2DB9F20733DAB0088B36B /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		BCD2DBA020733DAB0088B36B /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		BCD2DBA8207AE1150088B36B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		BCD2DBAA207AEA760088B36B /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +121,18 @@
 		BCD2DB652071FD640088B36B /* Neighborly */ = {
 			isa = PBXGroup;
 			children = (
+				BCD2DB9620733D7C0088B36B /* DrawerController */,
 				BCD2DB662071FD640088B36B /* AppDelegate.swift */,
 				BCD2DB682071FD640088B36B /* ViewController.swift */,
 				BCD2DB6A2071FD640088B36B /* Main.storyboard */,
 				BCD2DB6D2071FD640088B36B /* Assets.xcassets */,
 				BCD2DB6F2071FD640088B36B /* LaunchScreen.storyboard */,
 				BCD2DB722071FD640088B36B /* Info.plist */,
+				BCD2DB9420733CE00088B36B /* LeftSideMenuViewController.swift */,
+				BCD2DBA8207AE1150088B36B /* MenuTableViewCell.swift */,
+				BCD2DBAA207AEA760088B36B /* AboutViewController.swift */,
+				BC934624207BFC6E0050F81A /* SearchViewController.swift */,
+				BC934626207BFF100050F81A /* PostViewController.swift */,
 			);
 			path = Neighborly;
 			sourceTree = "<group>";
@@ -123,6 +153,23 @@
 				BCD2DB882071FD640088B36B /* Info.plist */,
 			);
 			path = NeighborlyUITests;
+			sourceTree = "<group>";
+		};
+		BCD2DB9620733D7C0088B36B /* DrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				BCD2DB9920733DAA0088B36B /* MMDrawerBarButtonItem.h */,
+				BCD2DB9820733DAA0088B36B /* MMDrawerBarButtonItem.m */,
+				BCD2DB9E20733DAB0088B36B /* MMDrawerController.h */,
+				BCD2DBA020733DAB0088B36B /* MMDrawerController.m */,
+				BCD2DB9A20733DAA0088B36B /* MMDrawerController+Subclass.h */,
+				BCD2DB9C20733DAB0088B36B /* MMDrawerVisualState.h */,
+				BCD2DB9B20733DAB0088B36B /* MMDrawerVisualState.m */,
+				BCD2DB9D20733DAB0088B36B /* UIViewController+MMDrawerController.h */,
+				BCD2DB9F20733DAB0088B36B /* UIViewController+MMDrawerController.m */,
+				BCD2DB9720733DA90088B36B /* Neighborly-Bridging-Header.h */,
+			);
+			path = DrawerController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +240,7 @@
 				TargetAttributes = {
 					BCD2DB622071FD640088B36B = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					BCD2DB762071FD640088B36B = {
@@ -259,8 +307,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC934625207BFC6E0050F81A /* SearchViewController.swift in Sources */,
+				BCD2DBA220733DAB0088B36B /* MMDrawerVisualState.m in Sources */,
+				BCD2DB9520733CE00088B36B /* LeftSideMenuViewController.swift in Sources */,
+				BCD2DBA420733DAB0088B36B /* MMDrawerController.m in Sources */,
+				BCD2DBAB207AEA760088B36B /* AboutViewController.swift in Sources */,
+				BCD2DBA120733DAB0088B36B /* MMDrawerBarButtonItem.m in Sources */,
+				BCD2DBA9207AE1150088B36B /* MenuTableViewCell.swift in Sources */,
+				BCD2DBA320733DAB0088B36B /* UIViewController+MMDrawerController.m in Sources */,
 				BCD2DB692071FD640088B36B /* ViewController.swift in Sources */,
 				BCD2DB672071FD640088B36B /* AppDelegate.swift in Sources */,
+				BC934627207BFF100050F81A /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,11 +483,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Neighborly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aliber.Neighborly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Neighborly/DrawerController/Neighborly-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -440,11 +500,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Neighborly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aliber.Neighborly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Neighborly/DrawerController/Neighborly-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

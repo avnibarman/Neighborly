@@ -13,32 +13,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
-
-    @IBOutlet weak var LeftMenuLeadingConstraint: NSLayoutConstraint!
+   
+  
+  
+   
+    @IBAction func MenuTapped(_ sender: Any) {
+        var appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        appDelegate.centerContainer?.toggle(MMDrawerSide.left, animated: true, completion: nil)
+    }
     
-    var menuDisplayed = false;
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func OpenMenu(_ sender: Any) {
-        if(menuDisplayed){
-            LeftMenuLeadingConstraint.constant = -220
-            UIView.animate(withDuration: 0.3, animations:{
-                self.view.layoutIfNeeded()
-            })
-            
-        }else{
-            LeftMenuLeadingConstraint.constant = 0
-            UIView.animate(withDuration: 0.3, animations:{
-                self.view.layoutIfNeeded()
-            })
-        }
-        menuDisplayed = !menuDisplayed
-        
-    }
+ 
     
 
 }
