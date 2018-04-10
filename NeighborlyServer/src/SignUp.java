@@ -61,8 +61,4 @@ public class SignUp {
 		
 		return false;
 	}
-	
-	public static void main(String[] args) {
-		new SignUp("dshafi@usc.edu", "password", "Daniyal Shafi").performSignUp();
-	}
 }
