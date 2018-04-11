@@ -15,9 +15,9 @@ CREATE TABLE Items (
 	itemID INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     itemName VARCHAR(30) NOT NULL,
     ownerID INT(11) NOT NULL,-- foreign key from user table
-    borrowerID INT(11), -- foreign key from user table, if its null, means that it is available
+    borrowerID INT(11) , -- foreign key from user table, if its null, means that it is available
     availibility INT(1) NOT NULL,-- 0 its available, 1 it's not
-    image VARCHAR(300),
+    imageURL VARCHAR(300),
     description VARCHAR(500),
     categories VARCHAR(300),
 	latitude DOUBLE(20,16) NOT NULL,
