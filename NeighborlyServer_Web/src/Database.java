@@ -2,7 +2,11 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,10 +29,11 @@ public class Database {
 								" VALUES(? , ?, ?, ? , ?, ?,?)";	
 	static String preppingforSearch = "ALTER TABLE Items" +
 									" ADD FULLTEXT(itemName,description);";
-	
 	static String searchForItems = " SELECT * FROM Items " +
 									"WHERE MATCH(itemName,description) AGAINST (?)  AND NOT ownerID=? AND latitude BETWEEN ? AND ? AND longitude BETWEEN ? AND ?;"; 
-	
+	static String updateSQL = "UPDATE Users "
+            				+ "SET image = ? "
+            				+ "WHERE userID=?";
 	Database()
 	{
 		try
@@ -36,10 +41,11 @@ public class Database {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/Neighborly?user=root&password=root&useSSL=false"); 
 			System.out.println("Database connected");
+			
 		} 
 		catch (ClassNotFoundException e) 
 		{
-			System.out.println("Class not found exception in Database.java");
+			System.out.println("Class not found exception in Database constructor");
 		} 
 		catch (SQLException e) 
 		{
@@ -214,31 +220,48 @@ public class Database {
 		return toReturn;
 	}
 
-	public byte[] getItemImage() {
-		try 
-		{
-	        BufferedImage image = ImageIO.read(new File("image.jpg"));
-	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	        ImageIO.write(image, "jpg", baos);
-	        byte[] byteArray = baos.toByteArray();
-	        return byteArray;
-	    } 
-		catch (Exception e )
-		{
-	        System.out.println("Error: "+e.getMessage());
-	    }
-		
-		return null;
-	}
-
-	public void putImageInFileSystem(byte[] bytes)
-	{
-		try 
-		{
-			BufferedImage img = ImageIO.read(new ByteArrayInputStream(bytes));
-		} catch (IOException e) 
-		{
-			System.out.println("In putImage IOException");
+	public void putUserImage() {
+		//String fileName = userID + "_profile_pic.jpeg";
+		File file = new File("images/flowers.jpeg");
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(updateSQL);
+			FileInputStream input = new FileInputStream(file);
+			pstmt.setBinaryStream(1, input);
+			pstmt.setInt(2, 1);
+			pstmt.executeUpdate();
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found exception in getItemImage");
+		} catch (SQLException e) {
+			System.out.println("SQL exception in getItemImage");
+			System.out.println(e.getMessage());
 		}
 	}
+
+	public void getUserImage() {
+		String selectSQL = "SELECT image FROM Users WHERE userID=?";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(selectSQL);
+			pstmt.setInt(1, 1);
+			ResultSet rs = pstmt.executeQuery();
+			File file = new File("output.jpeg");
+			FileOutputStream output = new FileOutputStream(file);
+			 
+			System.out.println("Writing to file " + file.getAbsolutePath());
+			while (rs.next()) {
+			    InputStream input = rs.getBinaryStream("image");
+			    byte[] buffer = new byte[1024];
+			    while (input.read(buffer) > 0) {
+			        output.write(buffer);
+			    }
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL exception in Database searchItems");
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
