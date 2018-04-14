@@ -1,6 +1,7 @@
 
 public class Testing {
 	public static void main(String[] args) {
+		System.out.println("testing");
 		Database myDB = new Database();
 		/*myDB.signUp("djnakuda@gmail.com", "Daniyal", "password");
 		myDB.signUp("dshafi@gmail.com", "Daniyal Shafi", "password1");
@@ -14,6 +15,7 @@ public class Testing {
 		{
 			myItems.get(i).printItem();
 		}*/
+		System.out.println("testing");
 		
 		myDB.putUserImage();
 		myDB.getUserImage();

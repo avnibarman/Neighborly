@@ -1,13 +1,16 @@
+import java.io.IOException;
+
+import javax.websocket.Session;
 
 public class Message {
-	String mesage;
+	String message;
 	int id;
 	
-	public String getMesage() {
-		return mesage;
+	public String getMessage() {//corrected spelling for messsage
+		return message;
 	}
-	public void setMesage(String mesage) {
-		this.mesage = mesage;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	public int getId() {
 		return id;
@@ -16,5 +19,15 @@ public class Message {
 		this.id = id;
 	}
 	
+	public void sendMessage(Session s) {
+		try {
+			s.getBasicRemote().sendText(message);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	//2 users connected to messaging system
 
 }
