@@ -116,7 +116,7 @@ public class Item {
 		int ownerID = -1;
 		int borrowerID = -1;
 		String query = "INSERT INTO items (itemName, ownerID, borrowerID, availibility,"
-				+ "image, description, latitude, longitude) "
+				+ "imageURL, description, latitude, longitude) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
@@ -143,7 +143,7 @@ public class Item {
 			ps.setDouble(7, latitude);
 			ps.setDouble(8, longitude);
 			
-			ps.executeQuery();
+			ps.executeUpdate();
 			return true;
 			
 		}	
