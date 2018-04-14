@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.Vector;
 import javax.websocket.OnClose;
+import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
@@ -20,12 +21,13 @@ public class ServerSocket {
 	}
 	
 	@OnMessage
-	public void onMessage(String message, Session sesion) {
+	public void onMessage(Message message) {
 		System.out.println(message);
 		try {
 			for(Session s: sessionVector)
 			{
-				s.getBasicRemote().sendText(message);
+				if(s.getUserProperties().get(userId) == message.getId()) //@ Daniyal need to create userId userproperty
+				message.sendMessage(s);
 			}
 		}catch(IOException ioe)
 		{
@@ -38,6 +40,11 @@ public class ServerSocket {
 	{
 		System.out.println("Client Disconnected");
 		sessionVector.remove(session);
+	}
+	
+	@OnError
+	public void error(Throwable error) {
+		System.out.println("Error!");
 	}
 
 }

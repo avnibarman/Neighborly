@@ -1,3 +1,9 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Item {
 	
@@ -99,7 +105,86 @@ public class Item {
 		System.out.println("ownerID: " + ownerID);
 		System.out.println("Latitude: " + latitude);
 		System.out.println("Longitude: " + longitude);
+	}
+	
+	public boolean addToDatabase()
+	{
+		Connection conn = null;
+		Statement st = null; 
+		PreparedStatement ps = null; 
+		ResultSet rs = null; 
+		int ownerID = -1;
+		int borrowerID = -1;
+		String query = "INSERT INTO items (itemName, ownerID, borrowerID, availibility,"
+				+ "image, description, latitude, longitude) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/Neighborly?user=root&password=root&useSSL=false"); 
+			st = conn.createStatement(); 
+			ps = conn.prepareStatement(query); //will get user class
+			
+			if(borrowerID != 0) {
+				availibility = 1;
+			}
+			
+			else {
+				availibility = 0;
+			}
+			
+			ps = conn.prepareStatement(query);
+			ps.setString(1, itemName);
+			ps.setInt(2, ownerID);
+			ps.setInt(3, borrowerID);
+			ps.setInt(4, availibility);
+			ps.setString(5, imageURL);
+			ps.setString(6, description);
+			ps.setDouble(7, latitude);
+			ps.setDouble(8, longitude);
+			
+			ps.executeQuery();
+			return true;
+			
+		}	
+
+		catch(SQLException sqle){
+			System.out.println("sqle: " + sqle.getMessage());
+		}
+		
+		catch(ClassNotFoundException cnfe)
+		{
+			System.out.println("cnfe: " + cnfe.getMessage());
+		}
+		
+		finally {
+			try {
+				if(rs!= null) {
+					rs.close();
+				}
+				if(st != null) {
+					st.close();
+				}
+				if(conn != null)
+				{
+					conn.close();
+				}
+			}
+			catch(SQLException sqle)
+			{
+				System.out.println("sqle closing streams: " + sqle.getMessage());
+			}
+			
+		}
+
+			return false;
+		}
+	
+	
+	public static void main(String [] args) {
+		//Item(int itemID,String itemName, String description, int availibility, String imageURL, int ownerID, int borrowerID, double latitude, double longitude)
+		Item item = new Item(1, "name", "description", 1, "imageURL", 1, 2, 1, 1);
+		item.addToDatabase();
 	}
 	
 }
