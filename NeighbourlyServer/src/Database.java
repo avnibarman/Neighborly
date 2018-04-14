@@ -34,10 +34,10 @@ public class Database {
 	static String updateSQL = "UPDATE Users " + "SET image = ? " + "WHERE userID=?";
 	static String updateItemSQL_Request = "UPDATE Items " + "SET available = ?, request = ?, requestorID = ? "
 			+ "WHERE itemID=?";
-	static String updateItemSQL_Accept = "UPDATE Items " + "SET available = ?, request = ?, borrowerID = ?"
+	static String updateItemSQL_Accept = "UPDATE Items " + "SET available = ?, request = ?, borrowerID = ? "
 			+ "WHERE itemID=?";
 	static String updateItemSQL_Decline = "UPDATE Items "
-			+ "SET available = ?, request = ?, borrowerID = ?, requestorID = ?" + "WHERE itemID=?";
+			+ "SET available = ?, request = ?, borrowerID = ?, requestorID = ? " + "WHERE itemID=?";
 
 	Database() {
 		try {
@@ -138,15 +138,15 @@ public class Database {
 	}
 
 	public void requestItem(int itemID, int requestorID) {
-		ResultSet rs;
+		// ResultSet rs;
 		try {
 
 			ps = conn.prepareStatement(updateItemSQL_Request);
-			ps.setInt(1, 0);
-			ps.setInt(2, 1);
+			ps.setInt(1, 0); // available
+			ps.setInt(2, 1); // request
 			ps.setInt(3, requestorID);
 			ps.setInt(4, itemID);
-			rs = ps.executeQuery();
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			System.out.println("SQL exception in Database requestItem");
@@ -158,7 +158,7 @@ public class Database {
 	}
 
 	public void acceptItem(int itemID, int borrowerID) {
-		ResultSet rs;
+		// ResultSet rs;
 		try {
 
 			ps = conn.prepareStatement(updateItemSQL_Accept);
@@ -166,7 +166,7 @@ public class Database {
 			ps.setInt(2, 0);
 			ps.setInt(3, borrowerID);
 			ps.setInt(4, itemID);
-			rs = ps.executeQuery();
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			System.out.println("SQL exception in Database acceptItem");
@@ -178,7 +178,7 @@ public class Database {
 	}
 
 	public void declineItem(int itemID, int borrowerID) {
-		ResultSet rs;
+		// ResultSet rs;
 		try {
 
 			ps = conn.prepareStatement(updateItemSQL_Decline);
@@ -186,7 +186,8 @@ public class Database {
 			ps.setInt(2, 0);
 			ps.setNull(3, java.sql.Types.INTEGER); // borrowerID
 			ps.setNull(4, java.sql.Types.INTEGER); // requestorID
-			rs = ps.executeQuery();
+			ps.setInt(5, itemID);
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			System.out.println("SQL exception in Database declineItem");
