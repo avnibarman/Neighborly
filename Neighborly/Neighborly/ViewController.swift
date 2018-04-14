@@ -14,19 +14,19 @@ class ViewController: UIViewController , WebSocketDelegate {
     
     
     func websocketDidConnect(socket: WebSocketClient) {
-        <#code#>
+        
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        <#code#>
+        
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        <#code#>
+        
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        <#code#>
+        
     }
     
     var socket = WebSocket(url: URL(string: "ws://localhost:8080/")!,protocols: ["chat"] )
