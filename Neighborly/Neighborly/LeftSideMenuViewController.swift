@@ -10,7 +10,8 @@ import UIKit
 
 class LeftSideMenuViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
 
-    var menuItems:[String] = ["Search Items","Account","Messages" ,"Groups", "About" ]
+    var menuItems:[String] = ["Search Items", "Account", "Messages" ,"Groups", "About" ]
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }

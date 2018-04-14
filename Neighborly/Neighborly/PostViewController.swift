@@ -9,13 +9,26 @@
 import UIKit
 
 class PostViewController: UIViewController {
-
+@IBOutlet weak var popupView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        popupView.layer.cornerRadius = 10
+        popupView.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
-
+    
+    
+    
+    @IBAction func PostSubmitted(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+       
+    }
+    
+    @IBAction func cancelPost(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

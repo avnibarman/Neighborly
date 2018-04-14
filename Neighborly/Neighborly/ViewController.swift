@@ -7,20 +7,49 @@
 //
 
 import UIKit
+import Starscream
 
-class ViewController: UIViewController {
 
+class ViewController: UIViewController , WebSocketDelegate {
+    
+    
+    func websocketDidConnect(socket: WebSocketClient) {
+        <#code#>
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        <#code#>
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        <#code#>
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        <#code#>
+    }
+    
+    var socket = WebSocket(url: URL(string: "ws://localhost:8080/")!,protocols: ["chat"] )
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        socket.delegate = self
+        socket.connect()
         
     }
+    
+    deinit {
+        socket.disconnect(forceTimeout: 0)
+        socket.delegate = nil
+    }
    
-  
-  
+   
+    
    
     @IBAction func MenuTapped(_ sender: Any) {
-        var appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
         appDelegate.centerContainer?.toggle(MMDrawerSide.left, animated: true, completion: nil)
     }
     

@@ -14,12 +14,19 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    let borrowedItems:[String] = ["Ladder", "Power Drill"]
-    let myItems:[String] = ["Camera", "Snowboard", "Camping Tent"]
+    private var model = ItemsModel()
+    
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        appDelegate.centerContainer?.toggle(MMDrawerSide.left, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.tableView.rowHeight = 134
     }
     
     @IBAction func segmentControlClicked(_ sender: Any) {
@@ -36,11 +43,11 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
         
         switch(segmentControl.selectedSegmentIndex){
         case 0:
-            return borrowedItems.count
-            break
+            return model.borrowedItems.count
+            
         case 1:
-            return myItems.count
-            break
+            return model.myItems.count
+            
         default:
             break
         }
@@ -49,18 +56,25 @@ class AccountViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let myCell =  tableView.dequeueReusableCell( withIdentifier: "myCell", for: indexPath)
+        let cell =  tableView.dequeueReusableCell( withIdentifier: "itemCard", for: indexPath) as! ItemCardTableViewCell
         switch(segmentControl.selectedSegmentIndex){
         case 0:
-            myCell.textLabel!.text = borrowedItems[indexPath.row]
+            cell.itemName.text = model.borrowedItems[indexPath.row].itemName
+            cell.itemDetails.text = model.borrowedItems[indexPath.row].itemDescription
+            cell.itemDistanceFromCurrentUser.text = "100 miles"
+            cell.itemPhoto.image = UIImage(named:"DefaultItemCamera")
             break
         case 1:
-            myCell.textLabel!.text = myItems[indexPath.row]
+            cell.itemName.text = model.myItems[indexPath.row].itemName
+            cell.itemDetails.text = model.myItems[indexPath.row].itemDescription
+            cell.itemDistanceFromCurrentUser.text = "100 miles"
+            cell.itemPhoto.image = UIImage(named:"DefaultItemDrill")
             break
         default:
             break
         }
         
-        return myCell
+        return cell
     }
+    
 }
