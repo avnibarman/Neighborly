@@ -327,6 +327,34 @@ public class Database {
 		return toReturn;
 	}
 
+	public ArrayList<Item> searchItemsByDistance(int userID, String searchTerm, double latitude, double longitude,
+			int distanceInKM) {
+		ArrayList<Item> toReturn = new ArrayList<Item>();
+
+		String searchString = "SELECT * , 6371.04 * acos( cos( pi( ) /2 - radians( 90 - " + latitude
+				+ ") )* cos( pi( ) /2 - radians( 90 - " + latitude + " ) ) * cos( radians(" + longitude
+				+ ") - radians( " + longitude + " ) ) + sin( pi( ) /2 - radians( 90 -" + latitude
+				+ ") ) * sin( pi( ) /2 - radians( 90 -" + latitude
+				+ ") ) ) AS Distance FROM Items WHERE ( 6371.04 * acos( cos( pi( ) /2 - radians( 90 - latitude) ) *cos( pi( ) /2 - radians( 90 - "
+				+ latitude + " ) ) * cos( radians(" + longitude + ") - radians(" + longitude
+				+ " ) ) + sin( pi( ) /2 - radians( 90-" + latitude + ") ) * sin( pi( ) /2 - radians( 90 -" + latitude
+				+ " ) ) ) < 1 ) GROUP BY itemID HAVING Distance < " + distanceInKM + " BY Distance";
+		ResultSet rs;
+		try {
+			ps = conn.prepareStatement(searchString);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int itemID = rs.getInt("itemID");
+				toReturn.add(getItembyID(itemID));
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL exception in Database searchItems");
+			System.out.println(e.getMessage());
+		}
+
+		return toReturn;
+	}
+
 	public void putUserImage() {
 		// String fileName = userID + "_profile_pic.jpeg";
 		File file = new File("images/flowers.jpeg");
