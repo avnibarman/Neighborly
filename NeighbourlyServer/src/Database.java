@@ -26,8 +26,8 @@ public class Database {
 	static String borrowerQuery = "SELECT * FROM Users WHERE name=?";
 	static String singleItemQuery = "SELECT * FROM Items WHERE itemID=?";
 	static String signUpInsert = "INSERT INTO Users (email, name, password, borrow)\r\n" + " VALUES(? , ?, ?, ?);";
-	static String addItemInsert = "INSERT INTO Items(itemName, ownerID, imageURL, description, latitude, longitude,availibility, available, request)"
-			+ " VALUES(? , ?, ?, ? , ?, ?, ?, ?, ?)";
+	static String addItemInsert = "INSERT INTO Items(itemName, ownerID, imageURL, description, latitude, longitude,availibility, available, request, returnRequest)"
+			+ " VALUES(? , ?, ?, ? , ?, ?, ?, ?, ?, ?)";
 	static String preppingforSearch = "ALTER TABLE Items" + " ADD FULLTEXT(itemName,description);";
 	static String searchForItems = " SELECT * FROM Items "
 			+ "WHERE MATCH(itemName,description) AGAINST (?)  AND NOT ownerID=? AND latitude BETWEEN ? AND ? AND longitude BETWEEN ? AND ?;";
@@ -38,6 +38,11 @@ public class Database {
 			+ "WHERE itemID=?";
 	static String updateItemSQL_Decline = "UPDATE Items "
 			+ "SET available = ?, request = ?, borrowerID = ?, requestorID = ? " + "WHERE itemID=?";
+
+	static String returnRequestSQL = "UPDATE Items " + "SET returnRequest = ? " + "WHERE itemID=?";
+
+	static String returnAcceptSQL = "UPDATE Items " + "SET returnRequest = ?, borrowerID = ?, available = ? "
+			+ "WHERE itemID=?";
 
 	Database() {
 		try {
@@ -129,6 +134,7 @@ public class Database {
 			ps.setInt(7, 1);
 			ps.setInt(8, 1);
 			ps.setInt(9, 0);
+			ps.setInt(10, 0);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("SQL exception in Database addItem");
@@ -198,6 +204,73 @@ public class Database {
 		// declined
 	}
 
+	public void returnRequest(int itemID) {
+		int currentBorrowerID = getItembyID(itemID).getBorrowerID();
+		int ownerID = getItembyID(itemID).getOwnerID();
+
+		try {
+
+			ps = conn.prepareStatement(returnRequestSQL);
+			ps.setInt(1, 1);
+			ps.setInt(2, itemID);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println("SQL exception in Database acceptItem");
+			System.out.println(e.getMessage());
+		}
+
+		// send message to borrowerID that requestItem has happened
+		// send message to ownerID that item wants to be returned
+	}
+
+	// static String returnAcceptSQL = "UPDATE Items " + "SET returnRequest = ?,
+	// borrowerID = ?, available = ? "
+	// + "WHERE itemID=?";
+	public void returnRequestAccept(int itemID) {
+
+		int currentBorrowerID = getItembyID(itemID).getBorrowerID();
+		int ownerID = getItembyID(itemID).getOwnerID();
+
+		try {
+
+			ps = conn.prepareStatement(returnAcceptSQL);
+			ps.setInt(1, 0);
+			ps.setNull(2, java.sql.Types.INTEGER); // borrowerID
+			ps.setInt(3, 1);
+			ps.setInt(4, itemID);
+			System.out.println(ps.toString());
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println("SQL exception in Database return request accept Item");
+			System.out.println(e.getMessage());
+		}
+
+		// send message to ownerID and borrowerID that item has been returned
+	}
+
+	public void returnRequestDecline(int itemID) {
+
+		int currentBorrowerID = getItembyID(itemID).getBorrowerID();
+
+		try {
+
+			ps = conn.prepareStatement(returnRequestSQL);
+			ps.setInt(1, 0);
+			ps.setInt(2, itemID);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println("SQL exception in Database acceptItem");
+			System.out.println(e.getMessage());
+		}
+
+		// send message to borrowerID that your request to be returned has been denied
+	}
+
 	private Item getItembyID(int itemID) {
 		ResultSet rs;
 		try {
@@ -216,8 +289,9 @@ public class Database {
 			int available = rs.getInt("available");
 			int request = rs.getInt("request");
 			int requestorID = rs.getInt("requestorID");
+			int returnRequest = rs.getInt("returnRequest");
 			return new Item(itemID, itemName, description, availibility, imageURL, ownerID, borrowerID, latitude,
-					longitude, available, request, requestorID);
+					longitude, available, request, requestorID, returnRequest);
 		} catch (SQLException e) {
 			System.out.println("SQL exception in Database getItemsbyID");
 			System.out.println(e.getMessage());

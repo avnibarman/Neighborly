@@ -13,9 +13,11 @@ public class Item {
 	private int available;
 	private int request;
 	private int requestorID;
+	private int returnRequest;
 
 	Item(int itemID, String itemName, String description, int availibility, String imageURL, int ownerID,
-			int borrowerID, double latitude, double longitude, int available, int request, int requestorID) {
+			int borrowerID, double latitude, double longitude, int available, int request, int requestorID,
+			int returnRequest) {
 		this.itemID = itemID;
 		this.availibility = availibility;
 		this.imageURL = imageURL;
@@ -28,6 +30,7 @@ public class Item {
 		this.available = available;
 		this.request = request;
 		this.requestorID = requestorID;
+		this.setReturnRequest(returnRequest);
 
 	}
 
@@ -142,6 +145,14 @@ public class Item {
 		System.out.println("Latitude: " + latitude);
 		System.out.println("Longitude: " + longitude);
 
+	}
+
+	public int getReturnRequest() {
+		return returnRequest;
+	}
+
+	public void setReturnRequest(int returnRequest) {
+		this.returnRequest = returnRequest;
 	}
 
 }
